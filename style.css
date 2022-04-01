@@ -1,0 +1,20 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}/*Propriedade Gerais do Documento, aplicadas a todos os Elementos do DOM*/
+body{
+    min-height: 100vh; /*Define a altura mínima do body como 100vh*/
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+#centerDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+canvas{
+    border: 1px solid black;
+    display: block;
+    margin: 0 auto;
+}
