@@ -20,7 +20,7 @@ class cBird {
     velocity = 0
     jump = () => {
         this.velocity = jumpSize
-    } 
+    }
     draw = () => {
         ctx.drawImage(sprites, this.positionXSprite, this.positionYSprite, this.widthSprite, this.heightSprite, this.PositionX, this.PositionY, this.widthSprite, this.heightSprite)
     }
