@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flappy Bird - Uriel Belo</title>
+</head>
+<body>
+    <div></div>
+    <div id="centerDiv">
+        <canvas id="game-canvas" width="400" height="600"></canvas>
+    </div>
+    <div></div>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+        #centerDiv{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        canvas{
+            border: 1px solid black;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+    <script>
+        console.log('Bem-vindo ao Flappy Bird do Uriel Belo 🚀')
+        const sprites = new Image()
+        sprites.src = './sprites.png'
+
+        const canvas = document.querySelector('canvas')
+        const ctx = canvas.getContext('2d')
+
+        const ground = {
+            positionXSprite: 0,
+            positionYSprite: 610,
+
+        }
+
+        const qBirds = 1
+        const birds = []
+        class cBird {
+            positionXSprite = 0
+            positionYSprite = 0
+            widthSprite = 33
+            heightSprite = 24
+            birdPositionX = 20
+            birdPositionY = 100
+            draw = () => {
+                ctx.drawImage(sprites, this.positionXSprite, this.positionYSprite, this.widthSprite, this.heightSprite, this.birdPositionX, this.birdPositionY, this.widthSprite, this.heightSprite)
+            }
+        }
+        for(var i=0; i < qBirds; i++){
+            birds.push(new cBird)
+        }
+
+
+        function loop(){
+            birds.forEach((bird) => {
+                bird.draw()
+            })
+
+            requestAnimationFrame(loop)
+        }
+
+        loop()
+    </script>
+</body>
+</html>
