@@ -6,7 +6,7 @@ const canvas = document.querySelector('canvas')
 const ctx = canvas.getContext('2d')
 const qBirds = 1
 const birds = []
-const gravityAcceleration = 0.05
+const gravityAcceleration = 0.1
 const jumpSize = -2.5
 var colision = false
 let frames = 0
@@ -103,9 +103,11 @@ const pipes = {
     testColision(pair){
         var sameSpace = false
         birds.forEach( (bird) => {
-            if(bird.PositionX >= pair.positionX){
+            if(bird.PositionX + bird.widthSprite >= pair.positionX){
                 if(bird.PositionY <= (pair.skyY + this.heightSprite) || (bird.PositionY + bird.heightSprite) >= (pair.groundY)){
-                    sameSpace = true
+                    if(pair.positionX + this.widthSprite > bird.PositionX){
+                        sameSpace = true
+                    }
                 }
             }
         })
@@ -121,7 +123,7 @@ const pipes = {
         const modFrames = geralFrames % 300 === 0
         if(modFrames || geralFrames == 0){
             var gap = getRandomInclusive(110,140)
-            var randomPosition = getRandomInclusive(50,300)
+            var randomPosition = getRandomInclusive(50,280)
             this.pairs.push(
                 {   
                     positionX: 400,
@@ -137,6 +139,7 @@ const pipes = {
             }
             if(this.testColision(pair)){
                 console.log('gameOver!!')
+                colision = true
             }
         })
     }
