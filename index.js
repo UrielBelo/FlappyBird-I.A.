@@ -165,7 +165,7 @@ const pipes = {
         })
     },
     update(){
-        const modFrames = geralFrames % 300 === 0
+        const modFrames = geralFrames % 200 === 0
         if(modFrames || geralFrames == 0){
             var gap = getRandomInclusive(110,140)
             var randomPosition = getRandomInclusive(50,280)
@@ -177,7 +177,11 @@ const pipes = {
                     center: (400 + (gap/2)) - randomPosition
                 }
             )
-            currentPipe = pipes.pairs[0]
+        }
+        if(this.pairs[0].positionX < -40){
+            currentPipe = this.pairs[1]
+        }else{
+            currentPipe = this.pairs[0]
         }
         this.pairs.forEach( (pair) => {
             pair.positionX--
